@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rank calculator for Osu!</title>
+</head>
+
+<script>
+    function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")
+}
+function update(t, v) {
+    v = v.replace(' ', '');
+    var m = document.getElementById("mode").value;
+    var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (t == "rank") {
+                document.getElementById("pp").value = this.responseText;
+            } else {
+                document.getElementById("rank").value = this.responseText;
+            }
+            console.log(document.getElementById("pp").value.toLocaleString('en'));
+            document.getElementById("pp").value = formatNumber(document.getElementById("pp").value.replace(' ', ''));
+            document.getElementById("rank").value = formatNumber(document.getElementById("rank").value.replace(' ', ''));
+        }
+    };
+    xhttp.open("GET", "data/getPPRank.php?t=" + t + "&v=" + v + "&m=" + m, true);
+    xhttp.send();
+}
+</script>
+<body>
+    <div class="Title"><center>
+
+    <h1 class="Title">Rank calculator for Osu!</h1>
+
+    <hr class="rosa">
+
+    </center></div>
+
+    <form name="Form" action=" " method="post">
+        <p>Mode:</p>
+        <select id="mode" onchange="update('pp', document.getElementById('pp').value)">
+            <option value="0">Standart</option>
+            <option value="1">Mania</option>
+            <option value="2">Taiko</option>
+            <option value="3">Ctb</option>
+        </select>
+        <p>PP:</p><input id="pp" type="text" onkeyup="update(this.id, this.value)">
+        <p>Rank:</p><input id="rank" type="text" onkeyup="update(this.id, this.value)">
+    </form>
+
+</body>
+</html>
