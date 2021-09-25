@@ -8,15 +8,10 @@ div.Title{
     padding-top: 30px;
 }
 
-h1.Title{
-    padding-top: 5%;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-}
-h2{
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    padding-top: 2em;
+img.logo{
+    padding-top: 3%;
+    height: 9em;
+    padding-bottom: 2em;
 }
 
 hr.rosa{
@@ -24,8 +19,23 @@ hr.rosa{
     border-radius: 75px;
     height: 0.25em;
     border-style: none;
-    width: 20em;
+    width: 17em;
     margin-top: -1em;
+}
+
+hr.rosa2{
+    background-color: #6b00cf;
+    border-radius: 75px;
+    height: 0.25em;
+    border-style: none;
+    width: 17em;
+    margin-top: 2.7em;
+}
+
+h2{
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    padding-top: 1em;
 }
 
 div.btn{
